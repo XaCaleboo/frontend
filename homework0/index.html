@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const plus = ( a, b ) => {
+        //     return a+b
+        // }
+        // console.log(plus(1,2))
+
+
+        function plus() {
+            let result = 0
+            for (let i = 0; i < arguments.length; i++) {
+                result = result + arguments[i]
+            }
+            return result
+        }
+        console.log(plus(2,3,5,7,3))
+
+
+        const multiply = (a,b) => {
+            let result = a;
+            for(; result < a*b; ) {
+                result = plus(a,result);
+            }
+            return(result);
+        }
+        console.log(multiply(3,10));
+        
+
+        function multiplyAll() {
+            const args = Array.from(arguments);
+            let result = args.reduce(function(a,b) {
+                return a*b
+            })
+            return result
+        }
+        console.log(multiplyAll(2,4,5,1))
+
+        const mergeArrays = (m = [], n = []) => {
+            for (var i = 0; i < n.length; i++) {
+                m.push(n[i]);
+            }
+            return m
+        }
+        console.log(mergeArrays([1,2,3],[4,5]))
+
+
+        let people = [];
+        people[0] = {
+            name: "Полина",
+            gender: "Женский",
+            film: "Бойцовский клуб"
+        }
+        people[1] = {
+            name: "Алиса",
+            gender: "Женский",
+            film: "Тайна КоКо",
+        }
+        people[2] = {
+            name: "Миша",
+            gender: "Мужской",
+            film: "Форма воды"
+        }
+        people[3] = {
+            name: "Юля",
+            gender: "Женский",
+            film: "Три билборда"
+        }
+        people[4] = {
+            name: "Артем",
+            gender: "Мужской",
+            film: "Пятый элемент"
+        }
+        const filterFemales = (people = []) => {
+            if (people.gender == "Женский"){
+            return people = []
+            }
+        }
+        console.log(people.filter(filterFemales))
+
+
+        const getQuadrant = (x,y) => {
+            let result
+            if (x == 0 || y == 0) {
+                if (y == 0 && x == 0) {
+                result = "Центр"
+            } else if(x == 0 && y > 0) {
+                result = "Между первой и второй"
+            } else if(x == 0 && y<0){
+                result = "Между третьей и четвертой"
+            } else if(x>0 && y == 0){
+                result = "Между четвертой и первой"
+            } else {
+                result = "Между второй и третьей"
+            }}
+            else if (x>0 && y>0) {
+                result = "Первая четверть"
+            } else if (x<0 && y>0) {
+                result = "Вторая четверть"
+            } else if (x<0 && y<0) {
+                result = "Третья четверть"
+            } else {
+                result = "Четвертая четверть"
+            }
+            return result
+        }
+        console.log(getQuadrant(1, 2))
+        console.log(getQuadrant(-1,2))
+        console.log(getQuadrant(-2,-3))
+        console.log(getQuadrant(4, -7))
+        console.log(getQuadrant(0,0))
+
+       
+
+        const objectToQueryString = (object) => {
+            let params = Object.keys(object)
+            .map(par => `[${encodeURIComponent(par)}=${encodeURIComponent(object[par])}]`)
+            .join('&')
+            return `http://домен/страница?${params}`
+        }
+        console.log(objectToQueryString({ name1: 'John', name2: 'Федор' }))
+
+
+
+        
+        
+        const getIn = (obj, path, def) => {
+          for(var i = 0; i < path.length; i++) {
+            obj = obj[path[i]];
+            if(!obj) return def;
+        }
+        return obj;
+        }
+        console.log(getIn(person = {}, ["address", "street"], 'Бомж'));
+    </script>
+</body>
+</html>
