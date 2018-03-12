@@ -15,7 +15,7 @@
 
 
         const plus = (...args) => args.reduce((s, num) => s + num, 0);
-        console.log(plus(2,3,5,7,3))
+        console.log(plus(2, 3, 5, 7, 3))
 
 
         const multiply = (a, b) => {
@@ -25,16 +25,16 @@
             }
             return(result);
         }
-        console.log(multiply(3,10));
+        console.log(multiply(3, 10));
         
 
-        function multiplyAll(...args) {
-            let result = args.reduce(function(a,b) {
+        const multiplyAll = (...args) => {
+            let result = args.reduce(function(a, b) {
                 return a*b
             })
             return result
         }
-        console.log(multiplyAll(2,4,5,1))
+        console.log(multiplyAll(2, 4, 5, 1))
 
         const mergeArrays = (m = [], n = []) => {
             for (var i = 0; i < n.length; i++) {
@@ -42,7 +42,7 @@
             }
             return m
         }
-        console.log(mergeArrays([1,2,3],[4,5]))
+        console.log(mergeArrays([1, 2, 3],[4, 5]))
 
 
         let people = [
@@ -103,10 +103,10 @@
             return result
         }
         console.log(getQuadrant(1, 2))
-        console.log(getQuadrant(-1,2))
-        console.log(getQuadrant(-2,-3))
+        console.log(getQuadrant(-1, 2))
+        console.log(getQuadrant(-2, -3))
         console.log(getQuadrant(4, -7))
-        console.log(getQuadrant(0,0))
+        console.log(getQuadrant(0, 0))
 
        
 
@@ -124,13 +124,15 @@
         
         
         const getIn = (obj, path, def) => {
-          if (obj === undefined) return def  
-          else {for(var i = 0; i < path.length; i++) {
+          if (obj)  {
+            for(var i = 0; i < path.length; i++) {
             obj = obj[path[i]];
             if(!obj) return def;
+            }
+            return obj
+          }
+          else return def
         }
-        return obj;
-        }}
         person = {}
         console.log(getIn(person, ["address", "street"], 'Бомж'));
     </script>
