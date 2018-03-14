@@ -39,13 +39,7 @@
         console.log(multiplyAll(2, 4, 5, 1))
 
         const mergeArrays = (m = [], n = []) => {
-            let r = []
-            for (let i = 0; i < m.length; i++) {
-                r.push(m[i]);
-            }
-            for (let i = 0; i < n.length; i++) {
-                r.push(n[i]);
-            }
+            let r = m.concat(n)
             return r
         }
         console.log(mergeArrays([1, 2, 3], [4, 5]))
