@@ -39,16 +39,23 @@
         console.log(multiplyAll(2, 4, 5, 1))
 
         const mergeArrays = (m = [], n = []) => {
-            let r = m
-            for (var i = 0; i < n.length; i++) {
+            let r = []
+            for (let i = 0; i < m.length; i++) {
+                r.push(m[i]);
+            }
+            for (let i = 0; i < n.length; i++) {
                 r.push(n[i]);
             }
             return r
         }
         console.log(mergeArrays([1, 2, 3], [4, 5]))
+        const a = [1, 2, 3]
+        const b = [3, 4]
+        mergeArrays(a, b)
+        console.log(a)
 
 
-        let people = [
+        const people = [
             {
                 name: "Полина",
                 gender: "Женский",
@@ -112,10 +119,10 @@
 
 
         const objectToQueryString = (object) => {
-            const params = Object.keys(object)
-                .map(par => `${encodeURIComponent(par)}=${encodeURIComponent(object[par])}`)
-                .join('&')
-            return params
+            return Object.keys(object)
+                   .map(par => `${encodeURIComponent(par)}=${encodeURIComponent(object[par])}`)
+                   .join('&')
+            
         }
         console.log(objectToQueryString({ name1: 'John', name2: 'Федор' }))
         console.log('https://google.com/search?' + objectToQueryString({ q: 'фотографии байкала на закате' }))
@@ -126,7 +133,7 @@
 
         const getIn = (obj, path, def) => {
             if (obj) {
-                for (var i = 0; i < path.length; i++) {
+                for (let i = 0; i < path.length; i++) {
                     obj = obj[path[i]];
                     if (!obj) return def;
                 }
@@ -134,7 +141,7 @@
             } else return def
         }
         person = {}
-        console.log(getIn(person, ["address", "street"], 'Бомж'));
+        console.log(getIn(person, ["address", "street"], 'Бомж'))
     </script>
 </body>
 
