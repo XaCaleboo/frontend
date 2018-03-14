@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         // const plus = ( a, b ) => {
@@ -20,82 +22,81 @@
 
         const multiply = (a, b) => {
             let result = a;
-            for(let i = 0; i < (b-1); i++) {
+            for (let i = 0; i < (b - 1); i++) {
                 result = plus(a, result);
             }
-            return(result);
+            return (result);
         }
         console.log(multiply(3, 10));
-        
+
 
         const multiplyAll = (...args) => {
-            let result = args.reduce(function(a, b) {
-                return a*b
+            let result = args.reduce(function (a, b) {
+                return a * b
             })
             return result
         }
         console.log(multiplyAll(2, 4, 5, 1))
 
         const mergeArrays = (m = [], n = []) => {
+            let r = m
             for (var i = 0; i < n.length; i++) {
-                m.push(n[i]);
+                r.push(n[i]);
             }
-            return m
+            return r
         }
-        console.log(mergeArrays([1, 2, 3],[4, 5]))
+        console.log(mergeArrays([1, 2, 3], [4, 5]))
 
 
         let people = [
-         {
-            name: "Полина",
-            gender: "Женский",
-            film: "Бойцовский клуб"
-        },
-         {
-            name: "Алиса",
-            gender: "Женский",
-            film: "Тайна КоКо",
-        },
-         {
-            name: "Миша",
-            gender: "Мужской",
-            film: "Форма воды"
-        },
-         {
-            name: "Юля",
-            gender: "Женский",
-            film: "Три билборда"
-        },
-         {
-            name: "Артем",
-            gender: "Мужской",
-            film: "Пятый элемент"
-        }]
+            {
+                name: "Полина",
+                gender: "Женский",
+                film: "Бойцовский клуб"
+            },
+            {
+                name: "Алиса",
+                gender: "Женский",
+                film: "Тайна КоКо",
+            },
+            {
+                name: "Миша",
+                gender: "Мужской",
+                film: "Форма воды"
+            },
+            {
+                name: "Юля",
+                gender: "Женский",
+                film: "Три билборда"
+            },
+            {
+                name: "Артем",
+                gender: "Мужской",
+                film: "Пятый элемент"
+            }]
         const filterFemales = (people) => {
             return people.filter(people => people.gender == "Женский")
         }
         console.log(filterFemales(people))
 
 
-        const getQuadrant = ( x, y ) => {
+        const getQuadrant = (x, y) => {
             let result
-            if (x == 0 || y == 0) {
-                if (y == 0 && x == 0) {
+            if (y == 0 && x == 0) {
                 result = "Центр"
-            } else if(x == 0 && y > 0) {
+            } else if (x == 0 && y > 0) {
                 result = "Между первой и второй"
-            } else if(x == 0 && y<0){
+            } else if (x == 0 && y < 0) {
                 result = "Между третьей и четвертой"
-            } else if(x>0 && y == 0){
+            } else if (x > 0 && y == 0) {
                 result = "Между четвертой и первой"
-            } else {
+            } else if (x < 0 && y == 0){
                 result = "Между второй и третьей"
-            }}
-            else if (x>0 && y>0) {
+            } else if (x > 0 && y > 0) {
                 result = "Первая четверть"
-            } else if (x<0 && y>0) {
+            } else if (x < 0 && y > 0) {
                 result = "Вторая четверть"
-            } else if (x<0 && y<0) {
+            } else if (x < 0 && y < 0) {
                 result = "Третья четверть"
             } else {
                 result = "Четвертая четверть"
@@ -108,12 +109,12 @@
         console.log(getQuadrant(4, -7))
         console.log(getQuadrant(0, 0))
 
-       
+
 
         const objectToQueryString = (object) => {
-            let params = Object.keys(object)
-            .map(par => `${encodeURIComponent(par)}=${encodeURIComponent(object[par])}`)
-            .join('&')
+            const params = Object.keys(object)
+                .map(par => `${encodeURIComponent(par)}=${encodeURIComponent(object[par])}`)
+                .join('&')
             return params
         }
         console.log(objectToQueryString({ name1: 'John', name2: 'Федор' }))
@@ -121,20 +122,20 @@
 
 
 
-        
-        
+
+
         const getIn = (obj, path, def) => {
-          if (obj)  {
-            for(var i = 0; i < path.length; i++) {
-            obj = obj[path[i]];
-            if(!obj) return def;
-            }
-            return obj
-          }
-          else return def
+            if (obj) {
+                for (var i = 0; i < path.length; i++) {
+                    obj = obj[path[i]];
+                    if (!obj) return def;
+                }
+                return obj
+            } else return def
         }
         person = {}
         console.log(getIn(person, ["address", "street"], 'Бомж'));
     </script>
 </body>
+
 </html>
