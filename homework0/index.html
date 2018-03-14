@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const plus = ( a, b ) => {
+        //     return a+b
+        // }
+        // console.log(plus(1,2))
+
+
+        const plus = (...args) => args.reduce((s, num) => s + num, 0);
+        console.log(plus(2, 3, 5, 7, 3))
+
+
+        const multiply = (a, b) => {
+            let result = a;
+            for (let i = 0; i < (b - 1); i++) {
+                result = plus(a, result);
+            }
+            return (result);
+        }
+        console.log(multiply(3, 10));
+
+
+        const multiplyAll = (...args) => {
+            let result = args.reduce(function (a, b) {
+                return a * b
+            })
+            return result
+        }
+        console.log(multiplyAll(2, 4, 5, 1))
+
+        const mergeArrays = (m = [], n = []) => {
+            let r = m.concat(n)
+            return r
+        }
+        console.log(mergeArrays([1, 2, 3], [4, 5]))
+        const a = [1, 2, 3]
+        const b = [3, 4]
+        mergeArrays(a, b)
+        console.log(a)
+
+
+        const people = [
+            {
+                name: "Полина",
+                gender: "Женский",
+                film: "Бойцовский клуб"
+            },
+            {
+                name: "Алиса",
+                gender: "Женский",
+                film: "Тайна КоКо",
+            },
+            {
+                name: "Миша",
+                gender: "Мужской",
+                film: "Форма воды"
+            },
+            {
+                name: "Юля",
+                gender: "Женский",
+                film: "Три билборда"
+            },
+            {
+                name: "Артем",
+                gender: "Мужской",
+                film: "Пятый элемент"
+            }]
+        const filterFemales = (people) => {
+            return people.filter(people => people.gender == "Женский")
+        }
+        console.log(filterFemales(people))
+
+
+        const getQuadrant = (x, y) => {
+            let result
+            if (y == 0 && x == 0) {
+                result = "Центр"
+            } else if (x == 0 && y > 0) {
+                result = "Между первой и второй"
+            } else if (x == 0 && y < 0) {
+                result = "Между третьей и четвертой"
+            } else if (x > 0 && y == 0) {
+                result = "Между четвертой и первой"
+            } else if (x < 0 && y == 0){
+                result = "Между второй и третьей"
+            } else if (x > 0 && y > 0) {
+                result = "Первая четверть"
+            } else if (x < 0 && y > 0) {
+                result = "Вторая четверть"
+            } else if (x < 0 && y < 0) {
+                result = "Третья четверть"
+            } else {
+                result = "Четвертая четверть"
+            }
+            return result
+        }
+        console.log(getQuadrant(1, 2))
+        console.log(getQuadrant(-1, 2))
+        console.log(getQuadrant(-2, -3))
+        console.log(getQuadrant(4, -7))
+        console.log(getQuadrant(0, 0))
+
+
+
+        const objectToQueryString = (object) => {
+            return Object.keys(object)
+                   .map(par => `${encodeURIComponent(par)}=${encodeURIComponent(object[par])}`)
+                   .join('&')
+            
+        }
+        console.log(objectToQueryString({ name1: 'John', name2: 'Федор' }))
+        console.log('https://google.com/search?' + objectToQueryString({ q: 'фотографии байкала на закате' }))
+
+
+
+
+
+        const getIn = (obj, path, def) => {
+            if (obj) {
+                for (let i = 0; i < path.length; i++) {
+                    obj = obj[path[i]];
+                    if (!obj) return def;
+                }
+                return obj
+            } else return def
+        }
+        person = {}
+        console.log(getIn(person, ["address", "street"], 'Бомж'))
+    </script>
+</body>
+
+</html>
